@@ -21,9 +21,10 @@ class App extends Component {
           <Container>
               <Switch>
                   <Route path="/" exact component={PostList}/>
+                  <Route path="/posts" exact component={PostList}/>
                   <Route path="/posts/add" exact render={(props) => <AddPost {...props} />}/>
                   <Route path="/posts/:id" exact render={(props) => <FullPost {...props}/>}/>
-                  <Route path="/posts/:id/edit"  render={(props) => <EditPost {...props} />}/>
+                  <Route path="/posts/:id/edit"  exact render={(props) => <EditPost {...props} />}/>
                   <Route path="/about" exact component={About} />
                   <Route path="/contact" exact component={Contact} />
               </Switch>
