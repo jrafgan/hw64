@@ -9,6 +9,8 @@ import './App.css';
 import PostList from "./containers/PostList/PostList";
 import FullPost from "./components/Post/FullPost";
 import EditPost from "./containers/EditPost/EditPost";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 
 
 class App extends Component {
@@ -22,8 +24,8 @@ class App extends Component {
                   <Route path="/posts/add" exact render={(props) => <AddPost {...props} />}/>
                   <Route path="/posts/:id" exact render={(props) => <FullPost {...props}/>}/>
                   <Route path="/posts/:id/edit"  render={(props) => <EditPost {...props} />}/>
-                  <Route path="/about" exact render={() => <h1>About</h1>}/>
-                  <Route path="/contact" exact component={FullPost}/>
+                  <Route path="/about" exact component={About} />
+                  <Route path="/contact" exact component={Contact} />
               </Switch>
 
           </Container>
