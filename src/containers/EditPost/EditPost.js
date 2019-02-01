@@ -17,6 +17,8 @@ class EditPost extends Component {
         }
     };
 
+    // axios.cancelToken
+
     editPost = post => {
         axios.put('posts/' + this.props.match.params.id + '.json', post).then(() => {
             alert('Внесено изменение');
