@@ -1,23 +1,36 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 
 class PostForm extends Component {
+    state = {
+        title: '',
+        description: ''
+    };
+
+    valueChanged = event => {
+        const {name, value} = event.target;
+        this.setState({[name]: value});
+    };
+
+    submitHandler = event => {
+        event.preventDefault();
+        console.log('Submit clicked');
+        this.props.submit({...this.state});
+    };
+
     render() {
         return (
-            <Fragment>
-                <h1>Add Post</h1>
-                <Form>
-                    <FormGroup>
-                        <Label for="title">Title</Label>
-                        <Input type="text" name="title" id="title" placeholder="Title"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="exampleText">Text Area</Label>
-                        <Input type="textarea" name="text" id="exampleText" style={{height: '300px'}}/>
-                    </FormGroup>
-                    <Button>Add</Button>
-                </Form>
-            </Fragment>
+            <Form onSubmit={this.submitHandler}>
+                <FormGroup>
+                    <Label for="title">Title</Label>
+                    <Input type="text" name="title" id="title" placeholder="Title" value={this.state.title} onChange={this.valueChanged} />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="description">Description</Label>
+                    <Input type="textarea" name="description" id="description" placeholder="Text" style={{height: '300px'}} value={this.state.description} onChange={this.valueChanged} />
+                </FormGroup>
+                <Button>Add Post</Button>
+            </Form>
         );
     }
 }
