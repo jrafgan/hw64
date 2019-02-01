@@ -20,6 +20,15 @@ class FullPost extends Component {
         this.props.history.push('/posts/' + id + '/edit');
     };
 
+    deleteHandler = id => {
+        if (window.confirm('Do you really want to remove this post ?')) {
+            axios.delete('posts/' + id + '.json').then(()=>{
+                alert('Пост удален !');
+                this.props.history.replace('/');
+            });
+        }
+    };
+
     render() {
         if (!this.state.post) return null;
 
@@ -34,7 +43,7 @@ class FullPost extends Component {
                 </Jumbotron>
                 <p className="lead float-right">
                     <Button color="primary" onClick={() => this.editHandler(this.state.id)}>Edit Post</Button>
-                    <Button color="danger">Delete Post</Button>
+                    <Button color="danger" onClick={() => this.deleteHandler(this.state.id)}>Delete Post</Button>
                 </p>
             </div>
         );
