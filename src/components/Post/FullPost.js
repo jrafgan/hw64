@@ -15,6 +15,11 @@ class FullPost extends Component {
         });
     };
 
+    editHandler = id => {
+        console.log(id);
+        this.props.history.push('/posts/' + id + '/edit');
+    };
+
     render() {
         if (!this.state.post) return null;
 
@@ -28,7 +33,7 @@ class FullPost extends Component {
 
                 </Jumbotron>
                 <p className="lead float-right">
-                    <Button color="primary">Edit Post</Button>
+                    <Button color="primary" onClick={() => this.editHandler(this.state.id)}>Edit Post</Button>
                     <Button color="danger">Delete Post</Button>
                 </p>
             </div>
