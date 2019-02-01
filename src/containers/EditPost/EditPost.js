@@ -18,10 +18,10 @@ class EditPost extends Component {
     };
 
     editPost = post => {
-        axios.update('posts/' + this.props.match.params.id, post).then(response => {
-            this.setState({post: response.data});
+        axios.put('posts/' + this.props.match.params.id + '.json', post).then(() => {
+            alert('Внесено изменение');
+            this.props.history.replace('/posts');
         });
-        console.log('EDIT MODE', post);
     };
 
     render() {
