@@ -14,8 +14,13 @@ class PostForm extends Component {
 
     submitHandler = event => {
         event.preventDefault();
-        console.log('Submit clicked');
         this.props.submit({...this.state});
+    };
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.data !== this.props.data) {
+          this.setState({title: this.props.data.title, description: this.props.data.description});
+      }
     };
 
     render() {
@@ -29,7 +34,7 @@ class PostForm extends Component {
                     <Label for="description">Description</Label>
                     <Input type="textarea" name="description" id="description" placeholder="Text" style={{height: '300px'}} value={this.state.description} onChange={this.valueChanged} />
                 </FormGroup>
-                <Button>Add Post</Button>
+                <Button>{this.props.data ? 'Update Post' : 'Add Post'}</Button>
             </Form>
         );
     }
