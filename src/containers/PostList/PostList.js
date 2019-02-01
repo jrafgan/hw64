@@ -17,14 +17,19 @@ class PostList extends Component {
     };
 
     readHandler= id => {
-      console.log(id);
+      this.props.history.push('/posts/' + id);
     };
 
     render() {
-        if (!this.state.posts) return null
+        if (!this.state.posts) return null;
 
         const posts = this.state.posts.map(post=>(
-                <ShortPost key={post.id} title={post.title} description={post.description} readClicked={() => this.readHandler(post.id)}/>
+                <ShortPost
+                    key={post.id}
+                    title={post.title}
+                    description={post.description}
+                    readClicked={() => this.readHandler(post.id)}
+                />
             ));
         return (
             <Fragment>

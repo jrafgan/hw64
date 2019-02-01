@@ -5,8 +5,9 @@ import axios from '../../axios-instances';
 class AddPost extends Component {
     addPost = post => {
         axios.post('posts.json', post).then(()=>{
-            // this.props.history.replace('/');
-        })};
+            this.props.history.replace('/');
+        })
+    };
 
     render() {
         return (
