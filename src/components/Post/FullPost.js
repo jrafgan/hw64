@@ -16,7 +16,6 @@ class FullPost extends Component {
     };
 
     editHandler = id => {
-        console.log(id);
         this.props.history.push('/posts/' + id + '/edit');
     };
 
